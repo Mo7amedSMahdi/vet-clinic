@@ -70,3 +70,74 @@ SELECT species, MIN(weight_kg), MAX(weight_kg) FROM animals GROUP BY species;
 
 -- What is the average number of escape attempts per animal type of those born between 1990 and 2000?
 SELECT species, AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990-1-1' AND '2000-12-31' GROUP BY species;
+
+-- Insert the following data into the owners table
+BEGIN;
+INSERT INTO "owners" ("id", "full_name", "age") VALUES (1, 'Sam Smith', 34);
+INSERT INTO "owners" ("id", "full_name", "age") VALUES (2, 'Jennifer Orwell', 19);
+INSERT INTO "owners" ("id", "full_name", "age") VALUES (3, 'Bob', 45);
+INSERT INTO "owners" ("id", "full_name", "age") VALUES (5, 'Dean Winchester', 14);
+INSERT INTO "owners" ("id", "full_name", "age") VALUES (4, 'Melody Pond', 77);
+INSERT INTO "owners" ("id", "full_name", "age") VALUES (6, 'Jodie Whittaker ', 38);
+COMMIT;
+
+-- Insert the following data into the species table
+BEGIN;
+INSERT INTO "public"."species" ("id", "name") VALUES (1, 'Pokemon');
+INSERT INTO "public"."species" ("id", "name") VALUES (2, 'Digimon');
+COMMIT;
+
+-- Modify your inserted animals so it includes the species_id value:
+-- If the name ends in "mon" it will be Digimon
+-- All other animals are Pokemon
+BEGIN;
+UPDATE animals SET species_id = 2 WHERE name LIKE '%mon%';
+UPDATE animals SET species_id = 1 WHERE species_id is null;
+COMMIT;
+
+-- Modify your inserted animals to include owner information (owner_id):
+-- Sam Smith owns Agumon.
+-- Jennifer Orwell owns Gabumon and Pikachu.
+-- Bob owns Devimon and Plantmon.
+-- Melody Pond owns Charmander, Squirtle, and Blossom.
+-- Dean Winchester owns Angemon and Boarmon.
+BEGIN;
+UPDATE animals SET owner_id = 1 WHERE name LIKE 'Agumon';
+UPDATE animals SET owner_id = 2 WHERE name LIKE 'Gabumon' OR name LIKE 'Pikachu';
+UPDATE animals SET owner_id = 3 WHERE name LIKE 'Devimon' OR name LIKE 'Plantmon';
+UPDATE animals SET owner_id = 4 WHERE name LIKE 'Charmander' OR name LIKE 'Squirtle' OR name LIKE 'Blossom';
+UPDATE animals SET owner_id = 5 WHERE name LIKE 'Angemon' OR name LIKE 'Boarmon';
+COMMIT;
+
+-- What animals belong to Melody Pond using join?
+SELECT animals.name FROM animals JOIN owners ON owners.id = animals.owner_id WHERE owners."id" = 4;
+
+-- List of all animals that are pokemon (their type is Pokemon).
+SELECT animals.name FROM animals JOIN species ON species.id = animals.species_id WHERE species.id = 1;
+
+-- List all owners and their animals, remember to include those that don't own any animal.
+SELECT name, full_name FROM animals FULL JOIN owners ON animals.owner_id = owners."id";
+
+-- How many animals are there per species?
+SELECT species.name,count(animals."name") FROM animals JOIN species
+ON animals.species_id = species."id"
+GROUP BY species."id";
+
+-- List all Digimon owned by Jennifer Orwell.
+SELECT species."name", animals.name, owners.full_name from animals JOIN species
+ON species."id" = animals.species_id
+JOIN owners
+ON owners."id" = animals.owner_id
+WHERE ( animals.owner_id = 2 AND animals.species_id = 2 );
+
+-- List all animals owned by Dean Winchester that haven't tried to escape.
+SELECT animals.name from animals
+JOIN owners ON owners.id = animals.owner_id
+WHERE escape_attempts = 0 AND animals.owner_id = 5;
+
+-- Who owns the most animals?
+SELECT owners.full_name, COUNT(animals.name) FROM animals 
+JOIN owners ON owners.id = animals.owner_id
+GROUP BY owners."id"
+ORDER BY count DESC
+LIMIT 1;
