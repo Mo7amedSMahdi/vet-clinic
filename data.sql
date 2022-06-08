@@ -13,3 +13,40 @@ INSERT INTO "public"."animals" ("id", "name", "date_of_birth", "escape_attempts"
 INSERT INTO "public"."animals" ("id", "name", "date_of_birth", "escape_attempts", "neutered", "weight_kg") VALUES (9, 'Boarmon', '2005-6-7', 7, TRUE, 20.40);
 INSERT INTO "public"."animals" ("id", "name", "date_of_birth", "escape_attempts", "neutered", "weight_kg") VALUES (10, 'Blossom', '1998-10-13', 3, TRUE, 17.00);
 INSERT INTO "public"."animals" ("id", "name", "date_of_birth", "escape_attempts", "neutered", "weight_kg") VALUES (11, 'Ditto', '2022-5-14', 4, TRUE, 22.00);
+
+-- Insert the following data into the species table
+INSERT INTO "public"."species" ("id", "name") VALUES (1, 'Pokemon');
+INSERT INTO "public"."species" ("id", "name") VALUES (2, 'Digimon');
+
+/* Insert the following data into vets table */
+INSERT INTO vets ("id", "name", "age", "date_of_graduation") VALUES (1, 'William Tatcher', 45, '2000-04-23');
+INSERT INTO vets ("id", "name", "age", "date_of_graduation") VALUES (2, 'Maisy Smith', 26, '2019-01-17');
+INSERT INTO vets ("id", "name", "age", "date_of_graduation") VALUES (3, 'Stephanie Mendez', 64, '1981-05-04');
+INSERT INTO vets ("id", "name", "age", "date_of_graduation") VALUES (4, 'Jack Harkness', 38, '2008-06-08');
+
+/* Insert the following data into specializations table */
+INSERT INTO specializations ("id", "species_id", "vet_id") VALUES (1, 1, 1);
+INSERT INTO specializations ("id", "species_id", "vet_id") VALUES (2, 2, 3);
+INSERT INTO specializations ("id", "species_id", "vet_id") VALUES (3, 2, 4);
+
+/* Insert the following data into visits */
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (1, 1,1, '2020-5-24');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (2, 1,3, '2020-7-22');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (3, 2,4, '2021-2-2');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (4, 3,2, '2020-1-5');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (5, 3,2, '2020-3-8');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (6, 3,2, '2020-5-14');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (7, 4,3, '2021-5-4');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (8, 5,4, '2021-2-24');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (9, 6,2, '2019-12-21');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (10, 6,1, '2020-8-10');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (11, 6,2, '2021-4-7');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (12, 7,3, '2019-9-29');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (13, 8,4, '2020-10-3');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (14, 8,4, '2020-11-4');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (15, 9,2, '2019-1-24');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (16, 9,2, '2019-5-15');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (17, 9,2, '2020-2-27');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (18, 9,2, '2020-8-3');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (19, 10,3, '2020-5-24');
+INSERT INTO visits ("id", "animal_id", "vet_id","date_of_visit") VALUES (20, 10,1, '2021-1-11');

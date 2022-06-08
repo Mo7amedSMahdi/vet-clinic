@@ -39,3 +39,30 @@ ALTER TABLE "public"."animals"
   ADD CONSTRAINT "species_id" FOREIGN KEY ("species_id") REFERENCES "public"."species" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT "owner_id" FOREIGN KEY ("owner_id") REFERENCES "public"."owners" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+
+/* Create a table named vets with the following columns:*/
+CREATE TABLE vets (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    age INT,
+    date_of_graduation DATE
+);
+
+/* specializations TABLE */
+CREATE TABLE specializations (
+    id SERIAL PRIMARY KEY,
+    species_id int4,
+    vet_id int4,
+    CONSTRAINT "species_id" FOREIGN KEY ("species_id") REFERENCES "public"."species" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION,
+    CONSTRAINT "vet_id" FOREIGN KEY ("vet_id") REFERENCES "public"."vets" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+/* visits table */
+CREATE TABLE visits (
+    id SERIAL PRIMARY KEY,
+    animal_id int4,
+    vet_id int4,
+    date_of_visit DATE,
+    CONSTRAINT "animal_id" FOREIGN KEY ("animal_id") REFERENCES "public"."animals" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION,
+    CONSTRAINT "vet_id" FOREIGN KEY ("vet_id") REFERENCES "public"."vets" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+);
