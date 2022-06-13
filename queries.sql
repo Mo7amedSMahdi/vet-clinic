@@ -212,3 +212,7 @@ GROUP BY vets.name,
   species.name
 ORDER BY COUNT DESC
 LIMIT 1;
+
+-- The following queries are taking too much time 
+-- (1 sec = 1000ms can be considered as too much time for database query). Try them on your machine to confirm it:
+explain analyze SELECT COUNT(*) FROM visits where animal_id = 4

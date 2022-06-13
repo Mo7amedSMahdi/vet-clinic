@@ -66,3 +66,11 @@ CREATE TABLE visits (
     CONSTRAINT "animal_id" FOREIGN KEY ("animal_id") REFERENCES "public"."animals" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION,
     CONSTRAINT "vet_id" FOREIGN KEY ("vet_id") REFERENCES "public"."vets" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
 );
+
+-- Add a new column for performance audit
+ALTER TABLE owners
+ADD COLUMN email VARCHAR(120);
+
+/* visits table index */
+CREATE INDEX ON visits(animal_id)
+CREATE INDEX ON visits(vet_id DESC)
