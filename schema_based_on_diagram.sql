@@ -26,3 +26,14 @@ CREATE TABLE treatments (
     type varchar(100),
     name varchar(100)
 );
+
+CREATE TABLE invoice_items (
+    id SERIAL PRIMARY KEY,
+    unit_price decimal(10,2),
+    quantity int4,
+    total_price decimal(10,2),
+    invoice_id int4,
+    treatment_id int4,
+    CONSTRAINT invoice_id FOREIGN KEY ("invoice_id") REFERENCES "public"."invoices" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION,
+    CONSTRAINT treatment_id FOREIGN KEY ("treatment_id") REFERENCES "public"."treatments" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+);
