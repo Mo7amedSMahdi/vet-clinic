@@ -27,6 +27,12 @@ This repository includes files with plain SQL that can be used to recreate a dat
 - Twitter: [devMo7amed](https://twitter.com/devMo7amed)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/Mo7amedSMahdi/)
 
+👤 **Alfred Bisimwa**
+
+- GitHub: [Alfred Bisimwa](https://github.com/Alfredbis29)
+- Twitter: [devMo7amed](https://twitter.com/AlfredBisimwa1)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/alfred-bisimwa/)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
