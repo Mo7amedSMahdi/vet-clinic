@@ -20,3 +20,7 @@ CREATE TABLE invoices (
     medical_history_id int4,
     CONSTRAINT "medical_history_id" FOREIGN KEY ("medical_history_id") REFERENCES "public"."medical_history" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
 );
+
+FROM patient
+  JOIN record ON record.patient_id = 2
+  JOIN invoices ON invoices.record_id = record.id
