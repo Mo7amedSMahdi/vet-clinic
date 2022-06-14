@@ -37,3 +37,17 @@ CREATE TABLE invoice_items (
     CONSTRAINT invoice_id FOREIGN KEY ("invoice_id") REFERENCES "public"."invoices" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION,
     CONSTRAINT treatment_id FOREIGN KEY ("treatment_id") REFERENCES "public"."treatments" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
 );
+
+CREATE TABLE medical_treatment (
+    id SERIAL PRIMARY KEY,
+    medical_id INT,
+    treatment_id INT,
+    CONSTRAINT fk_medical_history FOREIGN KEY("medical_id") REFERENCES "public"."medical_histories"("id") ON DELETE NO ACTION ON UPDATE NO ACTION,
+    CONSTRAINT fk_medical_treatment FOREIGN KEY("treatment_id") REFERENCES "public"."treatments"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+-- Optimized Execution analysis by creating Indexes
+CREATE INDEX treatment_id_asc ON invoice_items (treatment_id ASC);
+CREATE INDEX invoices_asc ON invoice_items (invoice_id ASC);
+CREATE INDEX patients_asc ON medical_histories (patient_id ASC);
+CREATE INDEX medical_histories_id_asc ON invoices (medical_histories_id ASC);
