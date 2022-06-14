@@ -21,6 +21,8 @@ CREATE TABLE invoices (
     CONSTRAINT "medical_history_id" FOREIGN KEY ("medical_history_id") REFERENCES "public"."medical_history" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-FROM patient
-  JOIN record ON record.patient_id = 2
-  JOIN invoices ON invoices.record_id = record.id
+CREATE TABLE treatments (
+    id SERIAL PRIMARY KEY,
+    type varchar(100),
+    name varchar(100)
+);
