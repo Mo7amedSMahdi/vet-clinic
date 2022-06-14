@@ -51,3 +51,4 @@ CREATE INDEX treatment_id_asc ON invoice_items (treatment_id ASC);
 CREATE INDEX invoices_asc ON invoice_items (invoice_id ASC);
 CREATE INDEX patients_asc ON medical_histories (patient_id ASC);
 CREATE INDEX medical_histories_id_asc ON invoices (medical_histories_id ASC);
+CREATE INDEX medical_treatment_id_asc ON medical_treatment (id ASC);
