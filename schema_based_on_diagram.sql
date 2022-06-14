@@ -18,6 +18,5 @@ CREATE TABLE invoices (
     generated_at timestamp(6),
     payed_at timestamp(6),
     medical_history_id int4,
-    status varchar(100),
     CONSTRAINT "medical_history_id" FOREIGN KEY ("medical_history_id") REFERENCES "public"."medical_history" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
 );
