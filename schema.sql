@@ -25,7 +25,6 @@ CREATE TABLE species (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100)
 );
-
 CREATE SEQUENCE animals_id_seq;
 
 ALTER TABLE public.animals ALTER COLUMN id SET DEFAULT nextval('animals_id_seq');
