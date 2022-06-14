@@ -74,3 +74,4 @@ ADD COLUMN email VARCHAR(120);
 /* visits table index */
 CREATE INDEX ON visits(animal_id)
 CREATE INDEX ON visits(vet_id DESC)
+CREATE INDEX ON owners(email)
